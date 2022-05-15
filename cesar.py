@@ -5,6 +5,7 @@ import string as s
 import enchant
 
 # Buscar diccionarios en carpeta de instalacion
+print(enchant.list_languages())
 dict = enchant.Dict("es_CO")
 
 
