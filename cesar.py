@@ -5,7 +5,7 @@ import string as s
 import enchant
 
 # Buscar diccionarios en carpeta de instalacion
-print(enchant.list_languages())
+#print(enchant.list_languages())
 sys.stdout.flush()
 dict = enchant.Dict("es_CO")
 
@@ -52,7 +52,10 @@ def get_may(vect: list):
         if (may < i):
             print(f'{may}-{i}')
             may = i
-    return vect.index(may)
+    if (not findInList(vect, may)):
+      return -1
+    else: 
+      return vect.index(may)
 
 
 def d(letter: str, num: int):
@@ -186,9 +189,12 @@ def decode(text: str) -> str:
     print(possible_desp)
     print(possible_contDesp)
     pos = get_may(possible_contDesp)
-    n = possible_desp[pos]
-    new_text = str(n) + ' '
-    for j in range(0, len(word)):
+    if (pos == -1):
+      return ("Oooops, no fue posible descifrar eso, ¿seguro que escribiste bien? :(")
+    else:
+      n = possible_desp[pos]
+      new_text = str(n) + ' '
+      for j in range(0, len(word)):
         new_text += word[j] + ' '
 
-    return encode_inv(new_text)
+      return encode_inv(new_text)

@@ -15,12 +15,12 @@ from cesar import encode, decode
 
 
 def start(update: Update, context: CallbackContext):
-    update.message.reply_text("Hola, Soy un Robot \U0001F916")
+    update.message.reply_text("¡Hola, Soy CASMYN \U0001F916! \n Cualquier indicación que necesites, favor escribe /help")
 
 
 def content(update: Update, context: CallbackContext):
     update.message.reply_text(
-        """Tengo un robot, yo lo hago funcionar, \n él es el mejor y vamos a jugar.""")
+        """CASMYN: bot creado para cifrar y descifrar palabras, oraciones o textos completos B).""")
 
 
 def contact(update: Update, context: CallbackContext):
@@ -40,8 +40,8 @@ def help(update: Update, context: CallbackContext):
     update.message.reply_text("""
   COMANDOS:
   /start -> Bienvenida
-  /help -> Menú
-  /content -> Información sobre mí - el BOT -
+  /help -> Este menú
+  /content -> Información sobre mí - el BOT - funcionalidades y lo que me gusta.
   /contact -> Contactar programadoras.
   /c -> Codifica, por el método de cifrado del César, un texto ingresado con un número 'x' de desplazamiento. 
   /d -> Decodifica, por el método de cifrado del César, un texto ingresado.
