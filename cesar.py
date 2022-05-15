@@ -1,11 +1,12 @@
 
 from typing import Tuple
-
+import sys
 import string as s
 import enchant
 
 # Buscar diccionarios en carpeta de instalacion
 print(enchant.list_languages())
+sys.stdout.flush()
 dict = enchant.Dict("es_CO")
 
 
