@@ -10,12 +10,6 @@ from telegram.ext.filters import Filters
 import cesar
 from cesar import encode, decode
 
-print("Server started!")
-
-#read file with the key gave by BotFather
-with open('key.txt', 'r') as f:
-    KEY = f.read()
-
 
 def start(update: Update, context: CallbackContext):
   update.message.reply_text("Hola, Soy un Robot \U0001F916")
@@ -72,24 +66,36 @@ def decodificar(update: Update, context: CallbackContext):
 
   decode_text = decode(text)
   update.message.reply_text(decode_text)
-  
-#Permite que el bot ande, usando como servidor local el computador
-updater = Updater(KEY, use_context = True)
 
-#para aceptar los comandos
-disp = updater.dispatcher
 
-disp.add_handler(CommandHandler("start", start))
-disp.add_handler(CommandHandler("content", content))
-disp.add_handler(CommandHandler("help", help))
-disp.add_handler(CommandHandler("contact", contact))
+def main():
 
-disp.add_handler(CommandHandler("c", codificar))
+  print("Server started!")
 
-disp.add_handler(CommandHandler("d", decodificar))
+  #read file with the key gave by BotFather
+  with open('key.txt', 'r') as f:
+      KEY = f.read()
+      
+  #Permite que el bot ande, usando como servidor local el computador
+  updater = Updater(KEY, use_context = True)
 
-disp.add_handler(MessageHandler(Filters.text, unknown))
-disp.add_handler(MessageHandler(Filters.command, unknown))
+  #para aceptar los comandos
+  disp = updater.dispatcher
 
-updater.start_polling()
-updater.idle()
+  disp.add_handler(CommandHandler("start", start))
+  disp.add_handler(CommandHandler("content", content))
+  disp.add_handler(CommandHandler("help", help))
+  disp.add_handler(CommandHandler("contact", contact))
+
+  disp.add_handler(CommandHandler("c", codificar))
+
+  disp.add_handler(CommandHandler("d", decodificar))
+
+  disp.add_handler(MessageHandler(Filters.text, unknown))
+  disp.add_handler(MessageHandler(Filters.command, unknown))
+
+  updater.start_polling()
+  updater.idle()
+
+if __name__ == '__main__':
+  main()
